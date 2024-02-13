@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>推箱子小游戏</title>
+  <link rel="stylesheet" href="./css/index.css">
+  <!-- 加载地图数组 -->
+  <script src="./js/mapArrays.js"></script>
+  <!-- 全局变量 -->
+  <script src="./js/globals.js"></script>
+</head>
+
+<body>
+  <!-- 最外层白色盒子 -->
+  <div class="outSide">
+    <span class="title">推箱子</span>
+    <!-- 游戏大盒子 -->
+    <div class="game">
+      <!-- 游戏左侧按钮盒子 -->
+      <div class="gameBtn">
+        <div class="gameBtnContainer">
+          <img src="./images/gameButton/重玩此关.png" style="width: 44px;" title="重玩此关">
+        </div>
+        <div class="gameBtnContainer">
+          <img src="./images/gameButton/上一关.png" style="width: 36px;" title="上一关">
+        </div>
+        <div class="gameBtnContainer">
+          <img src="./images/gameButton/下一关.png" style="width: 36px;" title="下一关">
+        </div>
+      </div>
+      <!-- 游戏区域外层盒子 -->
+      <div class="gameMain">
+        <!-- 音乐按钮 -->
+        <div class="musicBtnContainer">
+          <img src="./images/gameButton/音乐关.png" style="width: 36px;" class="musicBtn" title="音乐开关">
+          <!-- 背景音乐组件 -->
+          <audio class="bgMusic" src="./music/Work Hard, Play Hard.flac" loop></audio>
+          <!-- 背景音乐-推进陷阱 -->
+          <audio class="bgPullBox" src="./music/推箱子进陷阱.wav"></audio>
+          <!-- 背景音乐-执行操作 -->
+          <audio class="bgPull" src="./music/推箱子.mp3"></audio>
+          <!-- 背景音乐-通关 -->
+          <audio class="bgPass" src="./music/通关.mp3"></audio>
+        </div>
+        <!-- 撤回按钮 -->
+        <div class="revokeBtnContainer">
+          <img src="./images/gameButton/撤回.png" style="width: 34px;" class="revokeBtn" title="撤回操作">
+        </div>
+        <!-- 加载游戏后提示第几关的文字 -->
+        <p class="gameActiveLevelText">第 1 关</p>
+        <!-- 游戏区域 -->
+        <div class="gameActive">
+          <p style="font-size: 64px;">要用VSCode的Live Server插件打开</p>
+        </div>
+        <!-- 通关盒子（隐藏） -->
+        <div class="passActive">
+          <img src="./images/gameWon/Won.png">
+          <!-- 通关后的按钮大盒子 -->
+          <div class="passBtn">
+            <div class="passBtnContainer">
+              <img src="./images/gameButton/重玩此关.png" style="width: 30px;" title="重玩此关">
+            </div>
+            <div class="passBtnContainer">
+              <img src="./images/gameButton/上一关.png" style="width: 26px;" title="上一关">
+            </div>
+            <div class="passBtnContainer">
+              <img src="./images/gameButton/下一关.png" style="width: 26px;" title="下一关">
+            </div>
+          </div>
+          <!-- 通关后的信息显示 -->
+          <div class="passInfo">
+            <!-- 通关所用时间 -->
+            <div class="passInfoTime">
+              <img src="./images/gameWon/闹钟.png" style="width: 24px;">
+              <span class="passTimeText"></span>
+            </div>
+            <!-- 通关所用步数 -->
+            <div class="passInfoStep">
+              <img src="./images/gameWon/足迹.png" style="width: 24px;">
+              <span class="passStepText"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- 右侧栏 -->
+      <div class="gameInfo">
+        <h3>推箱子小游戏</h3>
+        <!-- 操作说明 -->
+        <div class="descriptionIndex">
+          <div class="gameInfoTitle">
+            <span>操作说明</span>
+          </div>
+          <div class="gameInfoContent">
+            <img src="./images/gameDescription/description1.png" style="padding-top: 4px;">
+          </div>
+        </div>
+        <!-- 游戏目标 -->
+        <div class="descriptionIndex">
+          <div class="gameInfoTitle">
+            <span>游戏目标</span>
+          </div>
+          <div class="gameInfoContent">
+            <p>合理操作，把箱子推到特定的位置，挑战关卡！</p>
+          </div>
+        </div>
+        <!-- 游戏介绍 -->
+        <div class="descriptionIndex">
+          <div class="gameInfoTitle">
+            <span>游戏介绍</span>
+            <img src="./images/gameDescription/箭头.png" style="width: 14px;" class="gameDescriptionArrow">
+          </div>
+          <!-- 展开按钮 -->
+          <div class="gameInfoContent switch">
+            <p>推箱子是一款考验玩家逻辑思维和空间感的益智游戏。玩家需要将游戏中的箱子移动到特定的位置。虽然听起来很简单，但实际上，游戏中的关卡逐渐变得复杂，需要巧妙的策略和动脑筋的解谜技巧！</p>
+          </div>
+        </div>
+        <!-- 游戏信息 -->
+        <div class="descriptionIndex">
+          <!-- 显示第几关 -->
+          <div class="gameInfoTitle">
+            <span>游戏信息 <span class="levelInfoText">第 1 关</span></span>
+          </div>
+          <!-- 游戏通关剩余箱子数 -->
+          <div class="gameInfoContent">
+            <div class="gameInfoBox">
+              <b>剩余</b>
+              <img src="./images/gameElements/box2.png" width="40px">
+              <b>：</b>
+              <b class="gameRestBoxText"></b>
+            </div>
+          </div>
+          <!-- 游戏通关所用的时间 -->
+          <div class="gameInfoContent">
+            <div class="gameInfoBox">
+              <b>使用</b>
+              <img src="./images/gameWon/闹钟.png" width="40px">
+              <b>： </b>
+              <b class="gameUseTimeText"><span class="timeInfoText">0 秒</span></b>
+            </div>
+          </div>
+          <!-- 游戏通关所用步数 -->
+          <div class="gameInfoContent">
+            <div class="gameInfoBox">
+              <b>使用</b>
+              <img src="./images/gameWon/足迹.png" width="40px">
+              <b>： </b>
+              <b class="gameUseStepText"> <span class="stepInfoText">0 步</span></b>
+            </div>
+          </div>
+        </div>
+        <div class="descriptionIndex">
+          <!-- 选关 -->
+          <div class="gameInfoTitle">
+            <span>游戏选关</span>
+          </div>
+          <!-- 这里用initSelectLevel.js来渲染选关列表 -->
+          <div class="selectLevel">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 在DOM元素全部加载后执行 -->
+  <script type="module" src="./js/initDOM.js"></script>
+  <script type="module" src="./js/initMap.js"></script>
+  <script type="module" src="./js/initListener.js"></script>
+  <script type="module" src="./js/initSelectLevel.js"></script>
+</body>
+
+</html>

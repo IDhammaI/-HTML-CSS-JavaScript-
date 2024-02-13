@@ -1,0 +1,400 @@
+* {
+  margin: 0;
+  padding: 0;
+  color: #333333;
+  user-select: none;
+}
+
+/* 背景图片 */
+body {
+  background-image: url(../images/bg.jpg);
+  background-position: center top;
+  background-repeat: no-repeat;
+  position: relative;
+}
+
+/* 游戏大盒子 */
+.game {
+
+  display: flex;
+  position: relative;
+  width: 960px;
+  height: 608px;
+  margin: 0 auto;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+.outSide {
+  position: relative;
+  background-color: #f1f1f1;
+}
+
+/* 游戏最外层盒子的彩虹背景 */
+.outSide::before {
+  content: '';
+  position: absolute;
+  left: 32px;
+  top: 32px;
+  width: 949px;
+  height: 649px;
+  background: linear-gradient(135deg, red, orange, yellow, green, cyan, blue, purple, orange);
+  transition: all .35s;
+  z-index: -1;
+  filter: blur(20px);
+  border-radius: 20px;
+  background-size: 1000%;
+  animation: amSize 80s linear infinite;
+}
+
+/* 游戏大盒子彩虹背景关键帧 */
+@keyframes amSize {
+  0% {
+    background-position: 0 0;
+  }
+
+  100% {
+    background-position: 1000% 0;
+  }
+}
+
+/* 包裹游戏区域的盒子 */
+.gameMain {
+  width: 608px;
+  height: 608px;
+  z-index: 2;
+  overflow: hidden;
+}
+
+/* 游戏区域 */
+.gameActive {
+  position: relative;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+}
+
+/* 渐变显示 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+/* 渐变显示 */
+@keyframes fadeOut {
+  from {
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+  }
+}
+
+/* 右侧游戏信息 */
+.gameInfo {
+  overflow: auto;
+  float: left;
+  width: 298px;
+  height: 608px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #fff;
+  margin-left: 2px;
+}
+
+/* 游戏通关盒子 */
+.passActive {
+  position: absolute;
+  left: 52px;
+  top: 0;
+  z-index: 999;
+  animation-name: fadeIn;
+  animation-duration: 1s;
+  animation-fill-mode: both;
+  display: none;
+
+  /* 通关后的图片 */
+  & img {
+    /* width: 500px; */
+  }
+
+  /* 通关后的按钮大盒子 */
+  .passBtn {
+    position: absolute;
+    left: 195px;
+    top: 389px;
+    height: 100px;
+    display: flex;
+    justify-content: space-between;
+    width: 230px;
+    height: 40px;
+
+  }
+
+  /* 按钮盒子 */
+  .passBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    width: 40px;
+    /* border-radius: 20px; */
+    box-shadow: inset -1px -1px 5px rgb(97, 97, 97), 1px 1px 3px white;
+    background-color: white;
+  }
+
+  .passBtnContainer:hover {
+    transform: translateY(-5px);
+    transition: all .3s;
+    filter: invert(80%);
+  }
+
+  /* 游戏通关后的信息盒子 */
+  .passInfo {
+    position: absolute;
+    left: 370px;
+    top: 223px;
+
+    /* 时间/步数盒子 */
+    & div {
+      display: block;
+      color: white;
+      font-weight: bold;
+      padding-bottom: 8px;
+    }
+  }
+}
+
+/* 左侧按钮栏 */
+.gameBtn {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 608px;
+  overflow: hidden;
+  margin-right: 2px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+
+  /* 左侧按钮的容器 */
+  .gameBtnContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 33.33%;
+    background-color: #fff;
+    cursor: pointer;
+  }
+
+  .gameBtnContainer:hover {
+    transition: all 1s;
+    background-color: rgba(41, 41, 41, 0.589);
+    /* background-color: #f1f1f1; */
+
+    /* 按钮图片 */
+    & img {
+      /* filter: invert(100%); */
+    }
+  }
+
+}
+
+/* 最外层白色盒子 */
+.outSide {
+  width: 1000px;
+  height: 700px;
+  background-color: #f1f1f1;
+  border: 1px solid #ebeaea;
+  margin: 40px auto;
+  border-radius: 20px;
+}
+
+/* 游戏小标题 */
+.title {
+  display: inline-block;
+  margin: 20px;
+  font-weight: bold;
+}
+
+.descriptionIndex {
+  width: 94%;
+  margin: 0 auto;
+  /* background-color: pink; */
+}
+
+.gameInfoTitle {
+  line-height: 2.5;
+  border-bottom: 1px solid rgb(189, 189, 189);
+}
+
+.gameInfoTitle span {
+  display: inline-block;
+  border-bottom: 2px solid #188019;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.gameInfoContent {
+  display: flex;
+}
+
+.gameInfoContent p {
+  font-size: 14px;
+  line-height: 24px;
+}
+
+.switch {
+  overflow: hidden;
+  transition: height 0.7s ease-in-out;
+  height: 120px;
+}
+
+.gameDescriptionArrow {
+  transition: rotate 0.5s ease-in-out;
+  cursor: pointer;
+}
+
+.gameInfoBox {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+}
+
+.gameInfoBox img {
+  display: inline-block;
+}
+
+.gameInfoBox b {
+  margin: 0px 10px;
+}
+
+.animatedFallDown {
+  animation: falldown .8s ease-in-out;
+}
+
+.animatedFade {
+  animation: scale 0.3s ease-in-out;
+}
+
+@keyframes scale {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes falldown {
+  0% {
+    transform: translateY(-300px);
+  }
+
+
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+.animatedBoxFallDown {
+  animation: falldown 1.2s ease-in-out;
+}
+
+.animatedRoleFallDown {
+  animation: falldown 1.6s ease-in-out;
+}
+
+.levelInfoText {
+  margin-left: 20px;
+  font-size: 32px;
+}
+
+.musicBtnContainer {
+  position: absolute;
+  z-index: 1;
+  left: 610px;
+  top: 8px;
+  cursor: pointer;
+}
+
+.revokeBtnContainer {
+  position: absolute;
+  z-index: 1;
+  left: 560px;
+  top: 8px;
+  cursor: pointer;
+}
+
+.fontAppear::before {
+  content: attr(text);
+  -webkit-text-stroke: #333333;
+  -webkit-text-stroke-width: 1px;
+  animation: fadeIn 1s ease-in-out;
+}
+
+.fontAppear {
+  -webkit-text-stroke: #333333;
+  -webkit-text-stroke-width: 1px;
+}
+
+.selectLevel {
+  margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.selectLevelIndex {
+  margin-top: 8px;
+  width: 60px;
+  height: 60px;
+  display: inline-block;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  text-align: center;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.selectLevelIndexTop {
+  height: 40px;
+  background-color: wheat;
+  line-height: 40px;
+  font-size: 20px;
+}
+
+.selectLevelIndexBottom {
+  height: 20px;
+  background-color: rgb(177, 226, 202);
+  line-height: 24px;
+  font-size: 12px;
+}
+
+.gameActiveLevelText {
+  position: absolute;
+  font-size: 32px;
+  color: white;
+  text-shadow: 2px 2px 4px black;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: #33333360;
+  z-index: 1;
+  left: 310px;
+  top: 20px;
+}
+
+h3 {
+  padding: 4px;
+  color: rgb(73, 73, 73);
+}

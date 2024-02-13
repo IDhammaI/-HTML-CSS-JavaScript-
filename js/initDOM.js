@@ -1,0 +1,21 @@
+// DOM对象
+export const oGameActive = document.querySelector(".gameActive");//游戏盒子
+export const oPassActive = document.getElementsByClassName('passActive')[0]//通关盒子
+export const oPassBtns = document.querySelectorAll('.passBtnContainer')//通关盒子三个按钮
+export const oGameBtns = document.querySelectorAll('.gameBtnContainer')//侧边栏盒子三个按钮
+export const oStepInfoText = document.getElementsByClassName('stepInfoText')[0]//信息栏步数
+export const oTimeInfoText = document.getElementsByClassName('timeInfoText')[0]//信息栏时间
+export const oLevelInfoText = document.getElementsByClassName('levelInfoText')[0]//信息栏时间
+export const oSwitchBtn = document.getElementsByClassName('gameDescriptionArrow')[0]//右侧栏的显示隐藏按钮
+export const oSwitchActive = document.getElementsByClassName('switch')[0]//要切换显示的盒子
+export const oPassTimeText = document.getElementsByClassName('passTimeText')[0]//通关后的时间文本
+export const oPassStepText = document.getElementsByClassName('passStepText')[0]//通关后的时间文本
+export const oGameRestBoxText = document.getElementsByClassName('gameRestBoxText')[0]//剩余箱子文本
+export const oMusicBtn = document.getElementsByClassName('musicBtn')[0]//音乐盒子
+export const oMusic = document.getElementsByClassName('bgMusic')[0]//音乐标签对象
+export const oBGPullBox = document.getElementsByClassName('bgPullBox')[0]//音乐标签对象
+export const oBGPull = document.getElementsByClassName('bgPull')[0]//执行操作后的音乐
+export const oBGPass = document.getElementsByClassName('bgPass')[0]//游戏通关后的音乐
+export const oRevokeBtn = document.getElementsByClassName('revokeBtn')[0]//撤回按钮
+export const oSelectLevel = document.getElementsByClassName('selectLevel')[0]//选择关卡的大盒子
+export const oGameActiveLevelText = document.getElementsByClassName('gameActiveLevelText')[0]//加载游戏后提示第几关的文字
